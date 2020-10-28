@@ -1,0 +1,89 @@
+/*
+ 4) Define a class Battery having data field: level which indicate its energy level. When an
+object is instantiated it has 100 units battery level. The class must implement the following
+methods:
+ A default constructor
+ showLevel() method to show the current battery level.
+ sendMsg() method is used to consume 2 units of battery on each call
+ recvMsg() method is used to consume 1 unit of battery on each call
+ compute() method consumes 1.5 unit of battery on each call
+ recharge(minutes) method update the battery level , 1 unit per 2 minutes.
+ */
+import java.util.*;
+class Battery
+{
+    float level;
+    Battery()
+    {
+        level=100;
+    }
+    void showLevel()
+    {
+        System.out.println("Current level of battery is :"+level);
+    }
+    void sendMsg()
+    {
+        level=level-2;
+        System.out.println(" Message sent ");
+    }
+     void recvMsg()
+    {
+        level=level-1;
+        System.out.println(" Message received");
+    }
+      void compute()
+    {
+        level=level-1.5f;
+        System.out.println(" Task Computed");
+    }
+      void recharge(int minute)
+      {
+          float res=(float)minute/2;
+          level=level+res;
+          System.out.println(" Recharge done");
+      }
+}
+public class program4 {
+    public static void main(String[] args) {
+        Battery bat=new Battery();
+        int n;
+        while(true)
+          {System.out.println("\t\t\t\tMENU ");
+           System.out.println(" 1. Show level ");
+           System.out.println(" 2. Send Msg ");
+           System.out.println(" 3.Recieve Msg ");
+           System.out.println(" 4. Compute");
+           System.out.println(" 5. Recharge");
+           System.out.println(" 6. Exit ");
+           int choice;
+           System.out.println("Choice :");
+           Scanner inp=new Scanner(System.in);
+           choice=inp.nextInt();
+           switch(choice)
+           {
+               case 1:
+                   bat.showLevel();
+                   break;
+               case 2:
+                   bat.sendMsg();
+                   break;
+               case 3:
+                   bat.recvMsg();
+                   break;
+               case 4:
+                   bat.compute();
+                   break;
+               case 5:
+                   System.out.println("Enter chargable minutes:");
+                   n=inp.nextInt();
+                   bat.recharge(n);
+                   break;
+               case 6:
+                   System.exit(0);
+                   
+                   
+           
+          }
+    }
+    }
+}
