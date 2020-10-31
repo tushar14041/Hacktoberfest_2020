@@ -1,0 +1,64 @@
+/*Rahul has found a new and unique way of sorting the arrays.If the array is not sorted, he would remove the first 
+or the second half of the array and he keeps on doing this process unless the array is completely sorted.
+Your task is to find out the largest sorted array that can be obtained from the given unsorted array.
+
+Example
+Input
+3
+4
+1 2 2 4
+8
+11 12 1 2 13 14 3 4
+4
+7 6 5 4
+
+Output
+4
+2
+1 */
+
+#include <stdio.h>
+int count;
+ int check( int a[],int l,int r){
+     int sub_len=(r-l)+1;
+int i;
+for(i=l;i<r;i++){
+    if(a[i]>a[i+1])
+     break;
+}
+if(i==r){
+    return sub_len;
+}
+else
+ return 1;
+	
+}
+void merge(int a[],int l,int r)
+{
+	if(l<r){
+		 int temp=check(a,l,r);
+		if(temp>count)
+			count=temp;
+			
+		
+		int m=l+(r-l)/2;
+		merge(a,l,m);
+		merge(a,m+1,r);
+		
+	}
+}
+int main() {
+	int t;
+	scanf("%d",&t);
+	while(t--){
+	    int n,i;
+	    scanf("%d",&n);
+	    int a[n];
+	    for(i=0;i<n;i++)
+	    scanf("%d",&a[i]);
+	    merge(a,0,n-1);
+	    printf("%d\n",count);
+	  count=0;
+	}
+	return 0;
+}
